@@ -139,7 +139,7 @@ class PerceptualBudgetAllocator(nn.Module):
         if hard:
             token_mask = (token_probs >= 0.5).to(features.dtype)
         else:
-            token_mask = token_probs
+            token_mask = token_probs.clone()
 
         if self.min_token_depth > 0:
             token_mask[..., : self.min_token_depth] = 1.0
