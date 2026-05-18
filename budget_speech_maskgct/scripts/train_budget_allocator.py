@@ -237,11 +237,21 @@ def run_epoch(
             optimizer.step()
 
         batch_size = batch["features"].shape[0]
+        frame_mask = batch["frame_mask"].to(budget.token_probs).float()
+        frame_count = frame_mask.sum().clamp_min(1.0)
+        avg_k = (budget.token_probs.sum(dim=-1) * frame_mask).sum() / frame_count
+        step_choices = torch.tensor(
+            model.step_choices,
+            device=budget.step_probs.device,
+            dtype=budget.step_probs.dtype,
+        )
+        expected_steps = (budget.step_probs * step_choices.view(1, 1, -1)).sum(dim=-1)
+        avg_s = (expected_steps * frame_mask).sum() / frame_count
         totals["loss"] += float(loss.total.detach()) * batch_size
         totals["saliency"] += float(loss.saliency.detach()) * batch_size
         totals["budget"] += float(loss.budget.detach()) * batch_size
-        totals["avg_k"] += float(budget.token_probs.sum(dim=-1).mean().detach()) * batch_size
-        totals["avg_s"] += float(budget.step_budget.float().mean().detach()) * batch_size
+        totals["avg_k"] += float(avg_k.detach()) * batch_size
+        totals["avg_s"] += float(avg_s.detach()) * batch_size
         count += batch_size
 
     return {key: value / max(count, 1) for key, value in totals.items()}
