@@ -1,0 +1,31 @@
+{
+  "baseline": {
+    "name": "Fixed-Budget MaskGCT",
+    "repo_path": "../third_party/Amphion",
+    "maskgct_config": "../third_party/Amphion/models/tts/maskgct/config/maskgct.json"
+  },
+  "budget": {
+    "num_quantizers": 12,
+    "step_choices": [1, 2, 4, 8, 12, 25],
+    "default_t2s_steps": 25,
+    "default_s2a_steps": [25, 10, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    "min_token_depth": 1,
+    "max_token_depth": 12,
+    "global_budget_eta": 1.0
+  },
+  "model": {
+    "feature_dim": 96,
+    "allocator_hidden_dim": 256,
+    "allocator_layers": 3,
+    "dropout": 0.1
+  },
+  "loss": {
+    "lambda_codec": 1.0,
+    "lambda_distill": 1.0,
+    "lambda_consistency": 0.5,
+    "lambda_saliency": 0.2,
+    "lambda_budget": 0.05,
+    "token_cost_weight": 1.0,
+    "step_cost_weight": 1.0
+  }
+}

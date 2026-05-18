@@ -1,0 +1,134 @@
+{
+  "paper_core": [
+    {
+      "id": "libritts_train_clean_100",
+      "name": "LibriTTS train-clean-100",
+      "language": "English",
+      "role": "training and budget distillation",
+      "source": "OpenSLR 60",
+      "url": "https://www.openslr.org/resources/60/train-clean-100.tar.gz",
+      "archive": "libritts_train-clean-100.tar.gz",
+      "bytes": 7723686890,
+      "extract_dir": "LibriTTS"
+    },
+    {
+      "id": "libritts_dev_clean",
+      "name": "LibriTTS dev-clean",
+      "language": "English",
+      "role": "validation",
+      "source": "OpenSLR 60",
+      "url": "https://www.openslr.org/resources/60/dev-clean.tar.gz",
+      "archive": "libritts_dev-clean.tar.gz",
+      "bytes": 1291469655,
+      "extract_dir": "LibriTTS"
+    },
+    {
+      "id": "libritts_test_clean",
+      "name": "LibriTTS test-clean",
+      "language": "English",
+      "role": "English objective and listening evaluation",
+      "source": "OpenSLR 60",
+      "url": "https://www.openslr.org/resources/60/test-clean.tar.gz",
+      "archive": "libritts_test-clean.tar.gz",
+      "bytes": 1230670113,
+      "extract_dir": "LibriTTS"
+    },
+    {
+      "id": "libritts_dev_other",
+      "name": "LibriTTS dev-other",
+      "language": "English",
+      "role": "validation under harder acoustics",
+      "source": "OpenSLR 60",
+      "url": "https://www.openslr.org/resources/60/dev-other.tar.gz",
+      "archive": "libritts_dev-other.tar.gz",
+      "bytes": 924804676,
+      "extract_dir": "LibriTTS"
+    },
+    {
+      "id": "libritts_test_other",
+      "name": "LibriTTS test-other",
+      "language": "English",
+      "role": "robust English evaluation",
+      "source": "OpenSLR 60",
+      "url": "https://www.openslr.org/resources/60/test-other.tar.gz",
+      "archive": "libritts_test-other.tar.gz",
+      "bytes": 964502297,
+      "extract_dir": "LibriTTS"
+    },
+    {
+      "id": "vctk_0_92",
+      "name": "CSTR VCTK Corpus 0.92",
+      "language": "English",
+      "role": "unseen-speaker and speaker-similarity evaluation",
+      "source": "University of Edinburgh DataShare",
+      "url": "https://datashare.ed.ac.uk/bitstream/handle/10283/3443/VCTK-Corpus-0.92.zip",
+      "archive": "VCTK-Corpus-0.92.zip",
+      "bytes": 11747302977,
+      "extract_dir": "VCTK-Corpus-0.92"
+    },
+    {
+      "id": "aishell3",
+      "name": "AISHELL-3",
+      "language": "Mandarin Chinese",
+      "role": "Chinese tone, prosody, and speaker-similarity evaluation",
+      "source": "OpenSLR 93",
+      "url": "https://www.openslr.org/resources/93/data_aishell3.tgz",
+      "archive": "data_aishell3.tgz",
+      "bytes": 19057141777,
+      "extract_dir": "AISHELL-3"
+    }
+  ],
+  "topconf_eval": [
+    {
+      "id": "librispeech_dev_clean",
+      "name": "LibriSpeech dev-clean",
+      "language": "English",
+      "role": "English validation for zero-shot evaluation",
+      "source": "OpenSLR 12",
+      "url": "https://www.openslr.org/resources/12/dev-clean.tar.gz",
+      "archive": "librispeech_dev-clean.tar.gz",
+      "extract_dir": "LibriSpeech"
+    },
+    {
+      "id": "librispeech_test_clean",
+      "name": "LibriSpeech test-clean",
+      "language": "English",
+      "role": "standard English zero-shot reporting benchmark",
+      "source": "OpenSLR 12",
+      "url": "https://www.openslr.org/resources/12/test-clean.tar.gz",
+      "archive": "librispeech_test-clean.tar.gz",
+      "extract_dir": "LibriSpeech"
+    },
+    {
+      "id": "librispeech_test_other",
+      "name": "LibriSpeech test-other",
+      "language": "English",
+      "role": "harder English zero-shot robustness benchmark",
+      "source": "OpenSLR 12",
+      "url": "https://www.openslr.org/resources/12/test-other.tar.gz",
+      "archive": "librispeech_test-other.tar.gz",
+      "extract_dir": "LibriSpeech"
+    },
+    {
+      "id": "seed_tts_eval",
+      "name": "Seed-TTS Eval",
+      "language": "English and Mandarin Chinese",
+      "role": "recent zero-shot benchmark with standard, cross-speaker, and hard-case subsets",
+      "source": "Hugging Face dataset mirror of Seed-TTS Eval",
+      "repo_id": "zhaochenyang20/seed-tts-eval",
+      "local_dir": "seed-tts-eval"
+    }
+  ],
+  "optional_scaling": [
+    {
+      "id": "libritts_train_clean_360",
+      "name": "LibriTTS train-clean-360",
+      "language": "English",
+      "role": "larger-scale English fine-tuning",
+      "source": "OpenSLR 60",
+      "url": "https://www.openslr.org/resources/60/train-clean-360.tar.gz",
+      "archive": "libritts_train-clean-360.tar.gz",
+      "extract_dir": "LibriTTS"
+    }
+  ]
+}
