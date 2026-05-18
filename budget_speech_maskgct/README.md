@@ -107,6 +107,17 @@ E:\BudgetSpeechDatasets\processed\
   valid\*.pt
 ```
 
+Linux 服务器上可以先用弱监督 warm-up 脚本从 LibriTTS 音频生成 shard：
+
+```bash
+python budget_speech_maskgct/scripts/prepare_budget_shards.py \
+  --input-root /root/autodl-fs/BudgetSpeechDatasets/extracted/LibriTTS/LibriTTS/train-clean-100 \
+  --output-dir /root/autodl-fs/BudgetSpeechDatasets/processed/libritts_train_clean_100 \
+  --max-utterances 2000
+```
+
+这个 warm-up 阶段使用能量、F0、频谱变化、文本长度等启发式感知线索生成 `saliency_depth`。它适合先把预算分配器训起来；完整论文实验还需要进一步接入 MaskGCT teacher，补充 `teacher_latent` 做蒸馏。
+
 ## 4. 快速 dry-run
 
 先跑合成数据，确认训练代码、loss、checkpoint 保存都正常：

@@ -8,6 +8,7 @@ run budget training after preparing shards from any zero-shot TTS backbone.
 from __future__ import annotations
 
 import argparse
+import glob
 from pathlib import Path
 import random
 import sys
@@ -88,7 +89,7 @@ class BudgetFeatureDataset(Dataset):
 
     @staticmethod
     def _load_shard(path: Path) -> list[dict[str, Any]]:
-        payload = torch.load(path, map_location="cpu")
+        payload = torch.load(path, map_location="cpu", weights_only=False)
         if isinstance(payload, list):
             return payload
         if not isinstance(payload, dict):
@@ -141,7 +142,11 @@ class BudgetFeatureDataset(Dataset):
 def expand_shards(patterns: list[str]) -> list[Path]:
     paths: list[Path] = []
     for pattern in patterns:
-        matched = sorted(Path().glob(pattern)) if any(x in pattern for x in "*?[") else []
+        matched = (
+            [Path(x) for x in sorted(glob.glob(pattern))]
+            if any(x in pattern for x in "*?[")
+            else []
+        )
         if matched:
             paths.extend(matched)
         else:
